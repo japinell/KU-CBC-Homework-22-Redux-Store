@@ -1,4 +1,7 @@
-import { gql } from '@apollo/client';
+//
+//  Functions to mutate the database through GraphQL APIs
+//
+import { gql } from "@apollo/client";
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {

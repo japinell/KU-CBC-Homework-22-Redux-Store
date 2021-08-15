@@ -1,3 +1,6 @@
+//
+//  Main program
+//
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
@@ -18,13 +21,11 @@ import { StoreProvider } from "./utils/GlobalState";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
 
-//import { Provider } from "react-redux";
-//import store from "./utils/store";
-
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
+//  Save the token to localStorage
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   return {
@@ -35,16 +36,19 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+//  Create instance of ApolloClient with support for GraphQL and Caching
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
+//  Render the main application components
 function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
         <div>
+          {/* StoreProvider - Manage the application state through React-Redux */}
           <StoreProvider>
             <Nav />
             <Switch>

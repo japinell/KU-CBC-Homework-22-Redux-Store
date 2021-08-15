@@ -1,3 +1,6 @@
+//
+//  Render the 404 page error
+//
 import React from "react";
 import Jumbotron from "../components/Jumbotron";
 

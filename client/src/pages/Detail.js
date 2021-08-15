@@ -1,9 +1,12 @@
+//
+//  Functions to render the application state and dispatch changes to it
+//  Wite/Read the cart to/from the Indexed Database
+//
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import Cart from "../components/Cart";
-//import { useStoreContext } from '../utils/GlobalState';
 import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
@@ -17,7 +20,6 @@ import spinner from "../assets/spinner.gif";
 import { useDispatch, useSelector } from "react-redux";
 
 function Detail() {
-  //const [state, dispatch] = useStoreContext();
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -30,11 +32,11 @@ function Detail() {
   const { products, cart } = state;
 
   useEffect(() => {
-    // already in global store
+    // Already in global store
     if (products.length) {
       setCurrentProduct(products.find((product) => product._id === id));
     }
-    // retrieved from server
+    // Retrieved from server
     else if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
@@ -45,7 +47,7 @@ function Detail() {
         idbPromise("products", "put", product);
       });
     }
-    // get cache from idb
+    // Get cache from idb
     else if (!loading) {
       idbPromise("products", "get").then((indexedProducts) => {
         dispatch({

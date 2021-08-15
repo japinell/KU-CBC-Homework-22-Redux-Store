@@ -1,4 +1,7 @@
-import { gql } from '@apollo/client';
+//
+//  Functions to query the database through GraphQL APIs
+//
+import { gql } from "@apollo/client";
 
 export const QUERY_PRODUCTS = gql`
   query getProducts($category: ID) {

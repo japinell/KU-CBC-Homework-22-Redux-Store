@@ -1,3 +1,6 @@
+//
+//  Render the categories menu, product list, and cart
+//
 import React from "react";
 import ProductList from "../components/ProductList";
 import CategoryMenu from "../components/CategoryMenu";
