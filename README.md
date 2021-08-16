@@ -57,8 +57,6 @@ Functionally, the application allows users to perform the following CRUD operati
 
 ![Login.](./images/login.png)
 
-![Checkout.](./images/checkout.png)
-
 ![Payment.](./images/payment.png)
 
 ## Installation
